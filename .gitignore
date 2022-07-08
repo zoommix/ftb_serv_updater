@@ -9,5 +9,6 @@ persisted/banned-players.json
 persisted/ops.json
 persisted/user_jvm_args.txt
 persisted/whitelist.json
+persisted/server.properties
 
 current

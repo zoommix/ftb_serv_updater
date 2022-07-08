@@ -24,6 +24,7 @@ ver_dir = "versions/#{ver[:name]}"
   ln -s #{ENV['PWD']}/persisted/whitelist.json #{ENV['PWD']}/#{ver_dir}/whitelist.json &&
   ln -s #{ENV['PWD']}/persisted/eula.txt #{ENV['PWD']}/#{ver_dir}/eula.txt &&
   ln -s #{ENV['PWD']}/persisted/user_jvm_args.txt #{ENV['PWD']}/#{ver_dir}/user_jvm_args.txt &&
+  ln -s #{ENV['PWD']}/persisted/server.properties #{ENV['PWD']}/#{ver_dir}/server.properties &&
   exit 0
 `
 

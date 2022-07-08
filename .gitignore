@@ -1,2 +1,11 @@
 versions/**
 !versions/.keep
+
+persisted/world/**
+!persisted/world/.keep
+
+persisted/banned-ips.json
+persisted/banned-players.json
+persisted/ops.json
+persisted/user_jvm_args.txt
+persisted/whitelist.json

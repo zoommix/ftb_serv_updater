@@ -12,17 +12,17 @@ ver = body[:versions].sort { |v| v[:updated] }.first
 id = ver.fetch(:id) # get latest version id
 
 file_name = "serverinstall_#{MODPACK_ID}_#{id}.sh"
-ver_dir = "versions/#{id}"
+ver_dir = "versions/#{ver[:name]}"
 
-`wget http://api.modpacks.ch/public/modpack/#{MODPACK_ID}/#{id}/server/linux -O #{ver_dir}/#{file_name}`
-`sudo chmod +x server/#{file_name}`
-`mkdir -p #{ver_dir}`
+`mkdir -p #{ver_dir} &&
+  wget http://api.modpacks.ch/public/modpack/#{MODPACK_ID}/#{id}/server/linux -O #{ver_dir}/#{file_name} &&
+  sudo chmod +x #{ver_dir}/#{file_name}`
 
-PTY.spawn("./#{ver_dir}/#{file_name}") do |reader, writer|
-  reader.expect(/Where would you like to install the server? [current directory]/)
-  writer.puts
-  reader.expect(/Path . already exists - still want to install? (y/n) [y]/)
-  writer.puts
-  reader.expect(/Continuing will install/)
-  writer.puts
+PTY.spawn("cd #{ver_dir} && ./#{file_name}") do |reader, writer|
+  writer.printf("\n")
+  writer.printf("\n")
+  writer.printf("\n")
+
+  reader.each {|line| puts line}
+rescue Errno::EIO
 end
